@@ -1,21 +1,8 @@
 <?php
-  // allow getText usage (_ function)
-  if (isSet($_GET["locale"]))
-    $locale = $_GET["locale"];
-  else
-    $locale = "en";
+require_once 'classes/loc-locale.php';
 
-  putenv("LC_ALL=$locale");
-  setlocale(LC_ALL, $locale);
-
-  bindtextdomain("messages", "locales");
-  bind_textdomain_codeset("messages", "UTF-8");
-  textdomain("messages");
-
-// TODO: figure out how to determine the language
-// 1. user setting? - this should be default for logged-in users
-// 2. http header? - logged out means we should go off of the http preferred language header
-
+$locale = LocLocale::getLocale();
+LocLocale::prepareGettext($locale);
 ?>
 <!doctype html>
 <html lang="<?=$locale?>">
