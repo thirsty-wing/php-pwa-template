@@ -1,30 +1,10 @@
+@view-transition {
+  navigation: auto;
+}
+
 :root {
   font-family: system-ui, sans-serif;
   font-weight: normal;
-}
-
-.top-bar {
-  position: fixed;
-  top: 0;
-  height: 5rem;
-  width: 100%;
-  background-color: mediumseagreen;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
-  > .leftmatter {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  > .leftmatter > .name {
-    font-size: 1.5rem;
-  }
-  > .leftmatter > .backlink > .icon {
-    width: 1.5rem;
-  }
 }
 
 .nav-bar {
@@ -62,13 +42,9 @@
   flex: 1;
   padding: 1rem;
   margin-bottom: 3rem;
-  margin-top: 5rem;
 }
 
 @media (min-width: 1024px) {
-  .top-bar {
-    padding-left: 6.5rem;
-  }
   .nav-bar {
     flex-direction: column;
     height: 100%;

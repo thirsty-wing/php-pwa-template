@@ -24,3 +24,8 @@ PHP is very good at creating hypermedia APIs.
 - Light/Dark modes. It is recognized that dark mode exists because light mode is
   too bright, so in order to keep complexity low we instead use neutral colors like
   they did in the 90s.
+
+## internationalization
+
+Generate .po files `xgettext *.php`
+Generate .mo file with `msgfmt messages.po -o messages.mo`
