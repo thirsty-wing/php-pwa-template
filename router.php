@@ -34,4 +34,4 @@
     exit;
   }
 
-  require '404.html';
+  require '404.php';

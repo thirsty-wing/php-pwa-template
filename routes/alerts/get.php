@@ -1,9 +1,8 @@
 <?php
-require_once 'classes/loc-locale.php';
+  require_once 'classes/loc-locale.php';
 
-//$locale = LocLocale::getLocale();
-$locale = explode('/', $_SERVER['REQUEST_URI'])[1];
-LocLocale::prepareGettext($locale);
+  $locale = explode('/', $_SERVER['REQUEST_URI'])[1];
+  LocLocale::prepareGettext($locale);
 ?>
 <!doctype html>
 <html lang="<?=$locale?>">
