@@ -10,7 +10,7 @@ $lang = 'en';
 <html lang="<?= $lang ?>">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" href="/styles.css"/>
+    <link rel="stylesheet" href="/public/styles.css"/>
   </head>
   <body style="margin:0">
     <main class="main-content">

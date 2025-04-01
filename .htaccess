@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+
+# Skip rewrite for .css and .svg files
+RewriteCond %{REQUEST_URI} !^/public/ [NC]
+RewriteCond %{REQUEST_URI} !^/assets/ [NC]
+
+# Handle all paths
+RewriteRule ^(.*)$ router.php [QSA,L]
