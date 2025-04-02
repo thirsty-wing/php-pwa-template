@@ -14,10 +14,16 @@ PHP is very good at creating hypermedia APIs.
 
 ## Features
 
-- Desktop and Mobile navigation conditional on viewport width
-- Scrollable and viewport constrained layouts
-- Assumes PHP's default path-based routing (sensible default, not hard to change)
-- internationalization is included
+- [HTML Templating](docs/HTML_TEMPLATING.md)
+- [CSS Strategy](docs/CSS_STRATEGY.md)
+- [DB CRUD](docs/DB_CRUD.md)
+- Path based [Routing](docs/ROUTING.md)
+- [Localization](docs/LOCALIZATION.md)
+- [Authentication](docs/AUTHENTICATION.md)
+- Role Based [Authorization](docs/AUTHORIZATION.md)
+- [Migrations](docs/MIGRATIONS.md)
+- [Logging](docs/LOGGING.md)
+- [Queues](docs/QUEUES.md)
 
 ## Non-features
 
