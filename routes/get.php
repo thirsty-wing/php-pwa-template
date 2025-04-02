@@ -1,8 +1,6 @@
 <?php
   require_once 'classes/loc-locale.php';
 
-  // $locale = LocLocale::getLocale();
-
   $locale = explode('/', $_SERVER['REQUEST_URI'])[1];
   LocLocale::prepareGettext($locale);
 ?>
@@ -11,7 +9,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" href="/public/styles.css"/>
+    <link rel="stylesheet" href="/assets/styles.css"/>
   </head>
   <body style="margin:0">
     <nav class="nav-bar">

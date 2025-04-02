@@ -9,7 +9,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" href="/public/styles.css"/>
+    <link rel="stylesheet" href="/assets/styles.css"/>
   </head>
   <body style="margin:0">
     <nav class="nav-bar">

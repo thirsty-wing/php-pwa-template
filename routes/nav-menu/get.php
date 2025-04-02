@@ -1,16 +1,14 @@
 <?php
+  require_once 'classes/loc-locale.php';
 
-// TODO: figure out how to determine the language
-// 1. user setting? - this should be default for logged-in users
-// 2. http header? - logged out means we should go off of the http preferred language header
-$lang = 'en';
-
+  $locale = explode('/', $_SERVER['REQUEST_URI'])[1];
+  LocLocale::prepareGettext($locale);
 ?>
 <!doctype html>
-<html lang="<?= $lang ?>">
+<html lang="<?=$locale?>">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" href="/public/styles.css"/>
+    <link rel="stylesheet" href="/assets/styles.css"/>
   </head>
   <body style="margin:0">
     <main class="main-content">
