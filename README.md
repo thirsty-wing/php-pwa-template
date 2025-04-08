@@ -2,6 +2,12 @@
 
 This is a template for php progressive web app (PWA).
 
+## What does this do?
+
+This template repo allows you to hit the ground running to create and run a
+hypermedia-driven progressive web application. It is similar to other web frameworks,
+but designed to be very light-weight and simple.
+
 ## Why does this exist?
 
 Making software simple is about understanding the use cases and leaning into what
@@ -11,6 +17,8 @@ whose offline capabilities have little to no use case. In other words, they are 
 much online apps. By recognizing this, we can lean into hypermedia technology which
 allows us to ship close to no application logic and just rely on a hypermedia API.
 PHP is very good at creating hypermedia APIs.
+
+That being said, there is still an opportunity to
 
 ## Features
 
@@ -30,8 +38,3 @@ PHP is very good at creating hypermedia APIs.
 - Light/Dark modes. It is recognized that dark mode exists because light mode is
   too bright, so in order to keep complexity low we instead use neutral colors like
   they did in the 90s.
-
-## internationalization
-
-Generate .po files `xgettext *.php`
-Generate .mo file with `msgfmt messages.po -o messages.mo`
