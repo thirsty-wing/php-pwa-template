@@ -21,7 +21,6 @@
     exit;
   }
 
-
   $method_specific_route = "routes/" . substr($path, 3) . '/' . strtolower($method) . '.php';
   if (file_exists($method_specific_route)) {
     require $method_specific_route;
