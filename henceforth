@@ -1,9 +1,12 @@
 #!/usr/bin/env php
 <?php
 // Work in progress
+//
+require "./document-root/classes/loc-db-accessor.php";
 
 
 $commands = "commands:\n" .
+"  show migration\n" .
 "  make migration [migration name]\n" .
 "  do migration\n" .
 "  undo migration\n";
@@ -26,7 +29,15 @@ switch ("$argv[1] $argv[2]") {
     touch("database/migrations/$datetime_str-$argv[3].down.sql");
     break;
   case "show migration":
-    
+    $db = LocDBAccessor::connect('./database/database.sqlite');
+    $results = $db->query('SELECT * FROM migration_tbl')->fetchAll();
+    echo "Migrations:\n";
+    foreach($results as $result) {
+      $results_arr = [$result['id'], $result['name'], $result['applied']];
+      echo implode(' | ', $results_arr) . "\n";
+    }
+    echo "\n";
+    break;
   default:
     echo $commands;
 }
