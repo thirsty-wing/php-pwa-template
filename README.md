@@ -38,3 +38,7 @@ That being said, there is still an opportunity to
 - Light/Dark modes. It is recognized that dark mode exists because light mode is
   too bright, so in order to keep complexity low we instead use neutral colors like
   they did in the 90s.
+
+## Getting started
+
+To get started, run `php henceforth do migration`, to run the migrations. Then run `php henceforth do seeder initialize`.
