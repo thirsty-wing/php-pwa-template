@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS user_tbl (
   preferred_name TEXT NOT NULL,
   account_id UUID NOT NULL,
   password TEXT,
-  email TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
   role TEXT CHECK(role IN ('basic', 'account-manager', 'administrator')) NOT NULL DEFAULT 'basic',
   FOREIGN KEY(account_id) REFERENCES account_tbl(id)
 );

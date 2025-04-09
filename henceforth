@@ -15,9 +15,18 @@ if (count($argv) < 3) {
 
 
 switch ("$argv[1] $argv[2]") {
-  case 'make migration':
-    echo "u say make migration!";
+  case "make migration":
+    if (count($argv) < 4) {
+      echo "you must provide the name for the migration\n";
+      exit(1);
+    }
+    $datetime = (new DateTime())->setTimezone(new DateTimeZone('Z'));
+    $datetime_str = $datetime->format('Y-m-d\TH:i:sp');
+    touch("database/migrations/$datetime_str-$argv[3].up.sql");
+    touch("database/migrations/$datetime_str-$argv[3].down.sql");
     break;
+  case "show migration":
+    
   default:
     echo $commands;
 }
