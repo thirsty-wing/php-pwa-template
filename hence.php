@@ -1,14 +1,22 @@
-<?php if (count($argv) < 2): ?>
-Take heed to supply a command.
+<?php
+// Work in progress
 
-commands:
-  
-<?php exit(); endif;
 
-echo "You said $argv[1]";
-exit();
+$commands = "commands:\n" .
+"  make migration [migration name]\n" .
+"  do migration\n" .
+"  undo migration\n";
 
-switch ($argv[1]) {
-  case 'locale':
+if (count($argv) < 3) {
+  echo $commands;
+  exit(1);
+}
 
+
+switch ("$argv[1] $argv[2]") {
+  case 'make migration':
+    echo "u say make migration!";
+    break;
+  default:
+    echo $commands;
 }
