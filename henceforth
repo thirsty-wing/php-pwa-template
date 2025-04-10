@@ -1,7 +1,6 @@
 #!/usr/bin/env php
 <?php
 // Work in progress
-//
 require "./document-root/classes/loc-db-accessor.php";
 
 
@@ -9,6 +8,7 @@ $commands = "commands:\n" .
 "  show migration\n" .
 "  make migration [migration name]\n" .
 "  do migration\n" .
+"  init database\n" .
 "  undo migration\n";
 
 if (count($argv) < 3) {
@@ -19,24 +19,94 @@ if (count($argv) < 3) {
 
 switch ("$argv[1] $argv[2]") {
   case "make migration":
+    /**************************************************************************
+     * make migration
+     * Creates a new pair of migration files
+     *************************************************************************/
     if (count($argv) < 4) {
       echo "you must provide the name for the migration\n";
       exit(1);
     }
-    $datetime = (new DateTime())->setTimezone(new DateTimeZone('Z'));
-    $datetime_str = $datetime->format('Y-m-d\TH:i:sp');
-    touch("database/migrations/$datetime_str-$argv[3].up.sql");
-    touch("database/migrations/$datetime_str-$argv[3].down.sql");
+
+    $datetime = (new DateTime())
+      ->setTimezone(new DateTimeZone('Z'))
+      ->format('Y-m-d\TH:i:sp');
+
+    touch("database/migrations/$datetime-$argv[3].up.sql");
+    touch("database/migrations/$datetime-$argv[3].down.sql");
     break;
   case "show migration":
-    $db = LocDBAccessor::connect('./database/database.sqlite');
-    $results = $db->query('SELECT * FROM migration_tbl')->fetchAll();
+    /**************************************************************************
+     * show migration
+     * Shows the migrations that have already been applied
+     *************************************************************************/
+    $db = LocDBAccessor::connect("./database/database.sqlite");
+    $results = $db
+      ->query("SELECT id, applied, name FROM migration_tbl")
+      ->fetchAll(PDO::FETCH_NUM);
+
     echo "Migrations:\n";
     foreach($results as $result) {
-      $results_arr = [$result['id'], $result['name'], $result['applied']];
-      echo implode(' | ', $results_arr) . "\n";
+      echo implode(' | ', $result) . "\n";
     }
     echo "\n";
+    break;
+  case "do migration":
+    /**************************************************************************
+     * do migration
+     * runs all pending migrations on the database
+     *************************************************************************/
+    $files = scandir("./database/migrations");
+    $migrations = array();
+
+    foreach($files as $file) {
+      if (preg_match("/\.up\.sql$/", $file)) {
+        array_push($migrations, $file);
+      }
+    }
+
+    $db = LocDBAccessor::connect("./database/database.sqlite");
+
+    // ensure the migration table exists
+    $migration_table_exists = $db->query("SELECT EXISTS (
+      SELECT name
+      FROM sqlite_master
+      WHERE type='table' AND name='migration_tbl'
+    )")->fetch(PDO::FETCH_NUM)[0];
+
+    if (!$migration_table_exists) {
+      $db->query("CREATE TABLE IF NOT EXISTS migration_tbl (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        applied TEXT NOT NULL DEFAULT (DATETIME('NOW'))
+      )")->execute();
+    }
+
+
+    $result = $db
+      ->query("SELECT name FROM migration_tbl DESC LIMIT 1")
+      ->fetch(PDO::FETCH_ASSOC);
+
+    // run all migrations starting with the oldest that has not been run
+    $i = -1;
+    if ($result) {
+      $i = array_search($result["name"], $migrations);
+    }
+
+    if ($i + 1 >= count($migrations)){
+      echo "All migrations are applied\n";
+      exit();
+    }
+
+    for (; $i + 1 < count($migrations); $i++) {
+      $migration = $migrations[$i + 1];
+      echo "executing $migration...";
+      $sql = file_get_contents("./database/migrations/$migration");
+      $db->query($sql)->execute();
+      $db->prepare("INSERT INTO migration_tbl (name) VALUES (:name)")->execute(["name" => $migration]);
+      echo "done.\n";
+    }
+
     break;
   default:
     echo $commands;
