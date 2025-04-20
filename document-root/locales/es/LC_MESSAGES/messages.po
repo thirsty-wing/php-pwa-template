@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-01 07:44-0600\n"
+"POT-Creation-Date: 2025-04-19 22:12-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,3 +61,57 @@ msgstr "no encontrado"
 
 msgid "I cannot find it!"
 msgstr "No lo puedo encontrar!"
+
+msgid "Invalid name"
+msgstr "Nombre invalido"
+
+msgid "Invalid preferred name"
+msgstr "Nombre preferido invalido"
+
+msgid "Invalid email"
+msgstr "Correo electrónico invalido"
+
+msgid "Invalid password"
+msgstr "Contraseña invalida"
+
+msgid "Password confirmation is absent"
+msgstr "Confirmacion de Contraseña es ausente"
+
+msgid "Passwords do not match"
+msgstr "Las Contraseñas no son iguales"
+
+msgid "Full Name"
+msgstr "Nombre Completo"
+
+msgid "What should we call you?"
+msgstr "Cómo se llama usted"
+
+msgid "Email"
+msgstr "Correo Electrónico"
+
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Confirm Password"
+msgstr "Confirmar Contraseña"
+
+msgid "Register"
+msgstr "Registrar"
+
+msgid "Already have an account?"
+msgstr "¿Ya tiene una cuenta?"
+
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+msgid "Username"
+msgstr "Nobre de Usuario"
+
+msgid "Logging in for the first time?"
+msgstr "¿Inicia la sesión por primera vez?"
+
+msgid "at least three characters"
+msgstr "por lo menos 3 carácteres"
+
+msgid "1 upper-case, 1 lower-case, 1 digit, 8 or more total characters"
+msgstr "1 mayúscula, 1 minúscula, 1 numero, 8 o más carácteres en total"

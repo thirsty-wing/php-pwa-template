@@ -6,6 +6,18 @@
   font-family: system-ui, sans-serif;
   font-weight: normal;
   background-color: silver;
+  --disabled-tc: #b0b0b0;
+  --disabled-text-tc: #707070;
+  --error-tc: #ff3238;
+  --success-tc: #00c000;
+  --secondary-tc: #969696;
+  --text-tc: black;
+  --warn-tc: orange;
+  --soft-tc: #666666;
+  --required-tc: red;
+  --input-inset-tc: #969696;
+  --info-tc: #4d90fe;
+  --shadow-tc: 3px 3px 3px #00000070;
 }
 
 .nav-bar {
@@ -59,4 +71,147 @@
 
 .nav-icon {
   width: 1.5rem;
+}
+
+.login-body {
+  margin: 0;
+  background-image: url("/assets/mount-nebo.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+}
+
+.login-main {
+  max-width: 320px;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: silver;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.text-input {
+  text-align: left;
+  -webkit-appearance: none;
+  min-height: 3.2em;
+  display: block;
+  padding: 0.75em;
+  border: 3px inset var(--input-inset-tc);
+  margin: 2px;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  &:user-invalid {
+    border-color: var(--error-tc);
+    border-radius: 3px;
+  }
+  &:focus {
+    outline: 2px solid var(--info-tc);
+    border-color: var(--info-tc);
+    border-radius: 3px;
+  }
+  &:user-invalid {
+    outline: 2px solid var(--error-tc);
+  }
+  &::-webkit-date-and-time-value {
+    text-align: left;
+    color: var(--text-tc);
+  }
+}
+
+.form-display {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.text-button {
+  align-items: center;
+  background-color: var(--success-tc);
+  border-radius: 0.75em;
+  border: 2px solid;
+  border-color: var(--success-tc);
+  box-sizing: border-box;
+  color: var(--text-tc);
+  display: inline-flex;
+  cursor: pointer;
+  box-shadow:
+    var(--shadow-tc),
+    inset 0.25em 0.25em 10px #ffffff70;
+  justify-content: center;
+  flex-wrap: nowrap;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 0 0.7em;
+  margin: 2px;
+  height: 2.25em;
+  touch-action: manipulation;
+  transition:
+    background-color 60ms ease-in-out,
+    border-color 60ms ease-in-out,
+    box-shadow 60ms ease-in-out,
+    transform 60ms ease-in-out;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  &:active&:not(:disabled) {
+    transform: scale(0.94);
+    box-shadow:
+      0.5px 0.5px 1px #00000070,
+      inset 0.1em 0.1em 10px #ffffff60;
+  }
+  &.-large {
+    font-size: 1.25rem;
+  }
+  &.-small {
+    padding: 0 0.5em;
+    border-radius: 0.6em;
+    height: 1.5em;
+  }
+  &.-fullwidth {
+    width: 100%;
+  }
+  &.-secondary {
+    background-color: var(--secondary-tc);
+    border-color: var(--secondary-tc);
+  }
+  &.-error {
+    background-color: var(--error-tc);
+    border-color: var(--error-tc);
+  }
+  &.-warn {
+    background-color: var(--warn-tc);
+    border-color: var(--warn-tc);
+  }
+  &.-info {
+    background-color: var(--info-tc);
+    border-color: var(--info-tc);
+  }
+  &:disabled {
+    background-color: var(--disabled-tc);
+    border-color: var(--disabled-tc);
+    color: var(--disabled-text-tc);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+  > .icon {
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
+.input-label {
+  > .description {
+    color: var(--soft-tc);
+  }
+  > .requiredstar {
+    color: var(--required-tc);
+  }
 }
